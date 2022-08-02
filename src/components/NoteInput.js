@@ -49,14 +49,16 @@ class NoteInput extends React.Component {
             type='text'
             id='title'
             onChange={this.onTitleChangeHandler}
+            placeholder='Judul'
             required
           />
           <textarea
             value={this.state.body}
             onChange={this.onBodyChangeHandler}
+            placeholder='Isi Catatan'
             required
           />
-          <button type='submit'>Submit</button>
+          <button type='submit'>Tambahkan Catatan</button>
         </form>
       </section>
     );

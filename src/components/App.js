@@ -22,7 +22,7 @@ class App extends React.Component {
     this.setState((prevState) => {
       return {
         notes: [
-          ...prevState,
+          ...prevState.notes,
           {
             id: +new Date(),
             title,
@@ -35,16 +35,35 @@ class App extends React.Component {
     });
   }
 
-  onDeleteHandler() {}
+  onDeleteHandler(id) {
+    const filteredNotes = this.state.notes.filter((note) => note.id !== id);
+    this.setState(() => {
+      return {
+        notes: filteredNotes,
+      };
+    });
+  }
 
-  onArchiveHandler() {}
+  onArchiveHandler(id) {
+    const findNote = this.state.notes.find((note) => note.id === id);
+    this.setState((prevState) => {
+      const filteredNotes = prevState.notes.map((prevNote) =>
+        prevNote.id === findNote.id
+          ? { ...prevNote, archived: 'true' }
+          : prevNote
+      );
+      return {
+        notes: filteredNotes,
+      };
+    });
+  }
 
   //jadi disini kita punya data keyword dr state searhinput, jd kita return dan render data tersebut terhadap
   //state di kelas ini yang punya akses data
   onSearchNoteHandler({ keyword }) {
     const searchKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-    const filteredNotes = this.state.notes.filter(
-      (note) => note.title.includes(searchKeyword) && searchKeyword !== ''
+    const filteredNotes = this.state.notes.filter((note) =>
+      note.title.includes(searchKeyword)
     );
 
     this.setState(() => {

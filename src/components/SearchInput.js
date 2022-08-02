@@ -22,7 +22,6 @@ class SearchInput extends React.Component {
   }
 
   onChangeHandler(event) {
-    event.preventDefault();
     this.setState(() => {
       return {
         keyword: event.target.value,
@@ -36,7 +35,12 @@ class SearchInput extends React.Component {
     return (
       <div className='note-search'>
         <p>{this.state.keyword}</p>
-        <input type='text' id='search' onChange={this.onChangeHandler} />
+        <input
+          type='text'
+          id='search'
+          onChange={this.onChangeHandler}
+          placeholder='Cari Catatan'
+        />
       </div>
     );
   }
