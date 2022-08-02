@@ -18,7 +18,22 @@ class App extends React.Component {
     this.onSearchNoteHandler = this.onSearchNoteHandler.bind(this);
   }
 
-  onAddNoteHandler() {}
+  onAddNoteHandler({ title, body, createdAt }) {
+    this.setState((prevState) => {
+      return {
+        notes: [
+          ...prevState,
+          {
+            id: +new Date(),
+            title,
+            body,
+            createdAt,
+            archived: false,
+          },
+        ],
+      };
+    });
+  }
 
   onDeleteHandler() {}
 
