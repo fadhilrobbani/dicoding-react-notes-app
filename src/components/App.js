@@ -49,7 +49,7 @@ class App extends React.Component {
     this.setState((prevState) => {
       const filteredNotes = prevState.notes.map((prevNote) =>
         prevNote.id === findNote.id
-          ? { ...prevNote, archived: 'true' }
+          ? { ...prevNote, archived: prevNote.archived === true ? false : true }
           : prevNote
       );
       return {

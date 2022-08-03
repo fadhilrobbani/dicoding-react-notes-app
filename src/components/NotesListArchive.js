@@ -10,6 +10,7 @@ function NotesListArchive({ notes, onDelete, onArchive }) {
         title={note.title}
         date={note.createdAt}
         body={note.body}
+        archived={note.archived}
         onDelete={onDelete}
         onArchive={onArchive}
       />
