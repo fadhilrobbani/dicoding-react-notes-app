@@ -1,18 +1,17 @@
 import React from 'react';
 import { getInitialData, showFormattedDate } from '../utils';
 import NavigationBar from './NavigationBar';
-import NotesList from './NotesList';
-import NoteInput from './NoteInput';
+import NoteBody from './NoteBody';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      //disini kita ubah supaya bisa ubah format tanggalnya
       notes: getInitialData().map((note) =>
         Object.assign(note, { createdAt: showFormattedDate(note.createdAt) })
       ),
+      searchKeyword: '',
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
@@ -61,33 +60,21 @@ class App extends React.Component {
     });
   }
 
-  //jadi disini kita punya data keyword dr state searhinput, jd kita return dan render data tersebut terhadap
-  //state di kelas ini yang punya akses data
   onSearchNoteHandler({ keyword }) {
     const searchKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-    const filteredNotes = this.state.notes.filter((note) =>
-      note.title.includes(searchKeyword)
-    );
-
-    this.setState(() => {
-      return {
-        notes: filteredNotes,
-      };
-    });
+    console.log(keyword);
   }
 
   render() {
     return (
       <>
         <NavigationBar searchNote={this.onSearchNoteHandler} />
-        <main>
-          <NoteInput addNote={this.onAddNoteHandler} />
-          <NotesList
-            notes={this.state.notes}
-            onDelete={this.onDeleteHandler}
-            onArchive={this.onArchiveHandler}
-          />
-        </main>
+        <NoteBody
+          notes={this.state.notes}
+          onDelete={this.onDeleteHandler}
+          onArchive={this.onArchiveHandler}
+          addNote={this.onAddNoteHandler}
+        />
       </>
     );
   }

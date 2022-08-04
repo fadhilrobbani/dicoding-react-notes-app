@@ -1,10 +1,12 @@
 import React from 'react';
+import NoteInput from './NoteInput';
 import NotesListActive from './NotesListActive';
 import NotesListArchive from './NotesListArchive';
 
-function NotesList({ notes, onDelete, onArchive }) {
+function NoteBody({ notes, onDelete, onArchive, addNote }) {
   return (
-    <section>
+    <main className='note-app__body'>
+      <NoteInput addNote={addNote} />
       <NotesListActive
         notes={notes}
         onDelete={onDelete}
@@ -15,8 +17,8 @@ function NotesList({ notes, onDelete, onArchive }) {
         onDelete={onDelete}
         onArchive={onArchive}
       />
-    </section>
+    </main>
   );
 }
 
-export default NotesList;
+export default NoteBody;

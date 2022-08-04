@@ -37,6 +37,7 @@ class SearchInput extends React.Component {
         <p>{this.state.keyword}</p>
         <input
           type='text'
+          value={this.state.keyword}
           id='search'
           onChange={this.onChangeHandler}
           placeholder='Cari Catatan'

@@ -1,2 +1,2 @@
 -bug search 
--kasih limit saat input judul di state-nya
+-benerin css
