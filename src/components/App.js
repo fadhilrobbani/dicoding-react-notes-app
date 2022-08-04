@@ -1,5 +1,5 @@
 import React from 'react';
-import { getInitialData } from '../utils';
+import { getInitialData, showFormattedDate } from '../utils';
 import NavigationBar from './NavigationBar';
 import NotesList from './NotesList';
 import NoteInput from './NoteInput';
@@ -9,7 +9,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      notes: getInitialData(),
+      //disini kita ubah supaya bisa ubah format tanggalnya
+      notes: getInitialData().map((note) =>
+        Object.assign(note, { createdAt: showFormattedDate(note.createdAt) })
+      ),
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
@@ -27,7 +30,7 @@ class App extends React.Component {
             id: +new Date(),
             title,
             body,
-            createdAt,
+            createdAt: showFormattedDate(createdAt),
             archived: false,
           },
         ],

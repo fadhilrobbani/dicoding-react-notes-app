@@ -27,9 +27,11 @@ class NoteInput extends React.Component {
     this.setState(() => {
       return {
         body: event.target.value,
+        createdAt: new Date().toISOString(),
       };
     });
   }
+
   onSubmitHandler(event) {
     event.preventDefault();
     this.setState(() => {
@@ -37,6 +39,7 @@ class NoteInput extends React.Component {
         createdAt: new Date().toISOString(),
       };
     });
+    console.log(this.state);
     this.props.addNote(this.state);
   }
 

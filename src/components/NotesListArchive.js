@@ -16,6 +16,8 @@ function NotesListArchive({ notes, onDelete, onArchive }) {
       />
     ) : null
   );
+
+  console.log(archiveNotes);
   return (
     <div>
       <h2>Arsip</h2>

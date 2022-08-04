@@ -16,16 +16,14 @@ function NotesListActive({ notes, onDelete, onArchive }) {
       />
     ) : null
   );
+  console.log(activeNotes);
 
   return (
     <div>
       <h2>Catatan Aktif</h2>
       <div className='notes-list'>
-        {activeNotes !== null ? (
-          activeNotes
-        ) : (
-          <h2 className='note-list__empty-message'>Tidak Ada Catatan Aktif</h2>
-        )}
+        {activeNotes.map((note) => note)}
+        <h2 className='note-list__empty-message'>Tidak Ada Catatan Aktif</h2>
       </div>
     </div>
   );
