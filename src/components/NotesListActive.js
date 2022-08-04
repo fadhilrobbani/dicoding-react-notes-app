@@ -2,29 +2,32 @@ import React from 'react';
 import NoteItem from './NoteItem';
 
 function NotesListActive({ notes, onDelete, onArchive }) {
-  const activeNotes = notes.map((note) =>
-    !note.archived && notes.length > 0 ? (
-      <NoteItem
-        key={note.id}
-        id={note.id}
-        title={note.title}
-        date={note.createdAt}
-        body={note.body}
-        archived={note.archived}
-        onDelete={onDelete}
-        onArchive={onArchive}
-      />
-    ) : null
+  const filteredNotes = notes.filter(
+    (note) => !note.archived && notes.length > 0
   );
-  console.log(activeNotes);
+
+  const activeNotes =
+    filteredNotes.length > 0 ? (
+      filteredNotes.map((note) => (
+        <NoteItem
+          key={note.id}
+          id={note.id}
+          title={note.title}
+          date={note.createdAt}
+          body={note.body}
+          archived={note.archived}
+          onDelete={onDelete}
+          onArchive={onArchive}
+        />
+      ))
+    ) : (
+      <p className='note-list__empty-message'>Tidak Ada Catatan Aktif</p>
+    );
 
   return (
     <div>
       <h2>Catatan Aktif</h2>
-      <div className='notes-list'>
-        {activeNotes.map((note) => note)}
-        <h2 className='note-list__empty-message'>Tidak Ada Catatan Aktif</h2>
-      </div>
+      <div className='notes-list'>{activeNotes}</div>
     </div>
   );
 }

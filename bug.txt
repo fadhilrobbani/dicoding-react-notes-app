@@ -1,3 +1,2 @@
 -bug search 
 -kasih limit saat input judul
--menampilkan pesan tidak ada catatan saat kosong

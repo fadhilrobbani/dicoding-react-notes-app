@@ -2,32 +2,32 @@ import React from 'react';
 import NoteItem from './NoteItem';
 
 function NotesListArchive({ notes, onDelete, onArchive }) {
-  const archiveNotes = notes.map((note) =>
-    note.archived && notes.length > 0 ? (
-      <NoteItem
-        key={note.id}
-        id={note.id}
-        title={note.title}
-        date={note.createdAt}
-        body={note.body}
-        archived={note.archived}
-        onDelete={onDelete}
-        onArchive={onArchive}
-      />
-    ) : null
+  const filteredNotes = notes.filter(
+    (note) => note.archived && notes.length > 0
   );
 
-  console.log(archiveNotes);
+  const archivedNotes =
+    filteredNotes.length > 0 ? (
+      filteredNotes.map((note) => (
+        <NoteItem
+          key={note.id}
+          id={note.id}
+          title={note.title}
+          date={note.createdAt}
+          body={note.body}
+          archived={note.archived}
+          onDelete={onDelete}
+          onArchive={onArchive}
+        />
+      ))
+    ) : (
+      <p className='note-list__empty-message'>Arsip Kosong</p>
+    );
+
   return (
     <div>
-      <h2>Arsip</h2>
-      <div className='notes-list'>
-        {archiveNotes !== null ? (
-          archiveNotes
-        ) : (
-          <h2 className='note-list__empty-message'>Arsip Kosong</h2>
-        )}
-      </div>
+      <h2>Catatan Aktif</h2>
+      <div className='notes-list'>{archivedNotes}</div>
     </div>
   );
 }
