@@ -21,7 +21,7 @@ function NotesListActive({ notes, onDelete, onArchive }) {
         />
       ))
     ) : (
-      <p className='note-list__empty-message'>Tidak Ada Catatan Aktif</p>
+      <p className='notes-list__empty-message'>Tidak Ada Catatan Aktif</p>
     );
 
   return (

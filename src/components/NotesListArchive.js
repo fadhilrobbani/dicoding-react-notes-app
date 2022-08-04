@@ -21,7 +21,7 @@ function NotesListArchive({ notes, onDelete, onArchive }) {
         />
       ))
     ) : (
-      <p className='note-list__empty-message'>Arsip Kosong</p>
+      <p className='notes-list__empty-message'>Arsip Kosong</p>
     );
 
   return (
