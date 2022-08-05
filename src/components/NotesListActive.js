@@ -10,26 +10,28 @@ function NotesListActive({ notes, onDelete, onArchive, searchKeyword }) {
 
   const activeNotes =
     filteredNotes.length > 0 ? (
-      filteredNotes.map((note) => (
-        <NoteItem
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          date={note.createdAt}
-          body={note.body}
-          archived={note.archived}
-          onDelete={onDelete}
-          onArchive={onArchive}
-        />
-      ))
+      <div className='notes-list'>
+        {filteredNotes.map((note) => (
+          <NoteItem
+            key={note.id}
+            id={note.id}
+            title={note.title}
+            date={note.createdAt}
+            body={note.body}
+            archived={note.archived}
+            onDelete={onDelete}
+            onArchive={onArchive}
+          />
+        ))}
+      </div>
     ) : (
-      <p className='notes-list__empty-message'>Tidak Ada Catatan Aktif</p>
+      <h3 className='notes-list__empty-message'>Tidak Ada Catatan</h3>
     );
 
   return (
     <div>
-      <h2>Catatan Aktif</h2>
-      <div className='notes-list'>{activeNotes}</div>
+      <h2 className='section-title'>Catatan Aktif</h2>
+      {activeNotes}
     </div>
   );
 }

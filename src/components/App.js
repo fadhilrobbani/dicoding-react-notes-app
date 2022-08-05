@@ -60,8 +60,6 @@ class App extends React.Component {
 
   onSearchKeywordHandler(keyword) {
     const filteredKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-    console.log(filteredKeyword);
-
     this.setState({ searchKeyword: filteredKeyword });
   }
 

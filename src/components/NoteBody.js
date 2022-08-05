@@ -6,6 +6,7 @@ import NotesListArchive from './NotesListArchive';
 function NoteBody({ notes, onDelete, onArchive, addNote, searchKeyword }) {
   return (
     <main className='note-app__body'>
+      <button>Tambahkan Catatan</button>
       <NoteInput addNote={addNote} />
       <NotesListActive
         notes={notes}

@@ -49,7 +49,7 @@ class NoteInput extends React.Component {
   render() {
     return (
       <section>
-        <h2>Buat Catatan</h2>
+        <h2 className='section-title'>Buat Catatan</h2>
         <form className='note-input' onSubmit={this.onSubmitHandler}>
           <p className='note-input__title__char-limit'>
             Sisa Karakter:{this.state.charsLeft}
@@ -69,7 +69,14 @@ class NoteInput extends React.Component {
             placeholder='Isi Catatan'
             required
           />
-          <button type='submit'>Tambahkan Catatan</button>
+          <div className='note-input__button'>
+            <button type='submit' className='note-input__submit-button'>
+              Tambahkan
+            </button>
+            <button type='button' className='note-input__cancel-button'>
+              Batal
+            </button>
+          </div>
         </form>
       </section>
     );

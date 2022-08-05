@@ -34,7 +34,6 @@ class SearchInput extends React.Component {
   render() {
     return (
       <div className='note-search'>
-        <p>{this.state.keyword}</p>
         <input
           type='text'
           value={this.state.keyword}
