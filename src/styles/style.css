@@ -47,6 +47,9 @@ textarea::placeholder {
   margin-left: 20px;
   margin-right: 20px;
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .note-app__body h2 {
@@ -54,10 +57,51 @@ textarea::placeholder {
   margin: 16px 0;
 }
 
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgb(75, 85, 94);
+  height: fit-content;
+}
+
 .note-input {
   margin: 0 auto;
-  max-width: 500px;
-  margin-bottom: 48px;
+  width: 100%;
+}
+
+.add-button {
+  width: fit-content;
+  font-size: larger;
+  height: 70px;
+  padding: 8px;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  background-color: rgb(12, 123, 147);
+  border: none;
+  border-radius: 11px;
+  font-weight: bold;
+  align-self: center;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  color: rgb(12, 123, 147);
+  background-color: white;
 }
 
 .note-input input,
@@ -85,11 +129,10 @@ textarea::placeholder {
   display: block;
   width: 100%;
   padding: 8px;
-  background-color: rgb(12, 123, 147);
   font-family: 'Inter', sans-serif;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 11px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -98,8 +141,23 @@ textarea::placeholder {
   display: flex;
   gap: 13px;
 }
+
+.note-input__button .note-input__submit-button {
+  background-color: rgb(12, 123, 147);
+}
+
+.note-input__button .note-input__submit-button:hover {
+  background-color: white;
+  color: rgb(12, 123, 147);
+}
+
 .note-input__button .note-input__cancel-button {
   background-color: #c84b31;
+}
+
+.note-input__button .note-input__cancel-button:hover {
+  background-color: white;
+  color: #c84b31;
 }
 
 .notes-list {
@@ -116,10 +174,20 @@ textarea::placeholder {
   border: 3px solid rgb(175, 175, 175);
   border-radius: 15px;
   color: #aaa;
+  width: auto;
+  align-self: stretch;
 }
 
-.section-title {
+.section-title__active {
   text-align: center;
+  background-color: #4d9f3dc4;
+  border-radius: 11px;
+}
+
+.section-title__archive {
+  text-align: center;
+  background-color: #fec16081;
+  border-radius: 11px;
 }
 
 .note-item {

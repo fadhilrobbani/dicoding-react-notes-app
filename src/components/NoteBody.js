@@ -3,11 +3,26 @@ import NoteInput from './NoteInput';
 import NotesListActive from './NotesListActive';
 import NotesListArchive from './NotesListArchive';
 
-function NoteBody({ notes, onDelete, onArchive, addNote, searchKeyword }) {
+function NoteBody({
+  notes,
+  onDelete,
+  onArchive,
+  addNote,
+  searchKeyword,
+  setShowTrue,
+  setShowFalse,
+  showStatus,
+}) {
   return (
     <main className='note-app__body'>
-      <button>Tambahkan Catatan</button>
-      <NoteInput addNote={addNote} />
+      <button className='add-button' onClick={setShowTrue}>
+        Tambahkan Catatan
+      </button>
+      <NoteInput
+        addNote={addNote}
+        setShowFalse={setShowFalse}
+        showStatus={showStatus}
+      />
       <NotesListActive
         notes={notes}
         onDelete={onDelete}

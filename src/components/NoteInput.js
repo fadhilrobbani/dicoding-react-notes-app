@@ -14,6 +14,7 @@ class NoteInput extends React.Component {
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onTitleChangeHandler = this.onTitleChangeHandler.bind(this);
     this.onBodyChangeHandler = this.onBodyChangeHandler.bind(this);
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   onTitleChangeHandler(event) {
@@ -38,47 +39,72 @@ class NoteInput extends React.Component {
 
   onSubmitHandler(event) {
     event.preventDefault();
-    this.setState(() => {
-      return {
-        createdAt: new Date().toISOString(),
-      };
-    });
-    this.props.addNote(this.state);
+    this.setState(
+      () => {
+        return {
+          createdAt: new Date().toISOString(),
+        };
+      },
+      () => {
+        this.props.addNote(this.state);
+        this.onClickHandler();
+      }
+    );
+  }
+
+  onClickHandler() {
+    this.setState(
+      () => {
+        return {
+          title: '',
+          body: '',
+          charsLeft: 50,
+        };
+      },
+      () => this.props.setShowFalse(false)
+    );
   }
 
   render() {
+    if (!this.props.showStatus) return null;
     return (
-      <section>
-        <h2 className='section-title'>Buat Catatan</h2>
-        <form className='note-input' onSubmit={this.onSubmitHandler}>
-          <p className='note-input__title__char-limit'>
-            Sisa Karakter:{this.state.charsLeft}
-          </p>
-          <input
-            value={this.state.title}
-            className='note-input__title'
-            type='text'
-            id='title'
-            onChange={this.onTitleChangeHandler}
-            placeholder='Judul'
-            required
-          />
-          <textarea
-            value={this.state.body}
-            onChange={this.onBodyChangeHandler}
-            placeholder='Isi Catatan'
-            required
-          />
-          <div className='note-input__button'>
-            <button type='submit' className='note-input__submit-button'>
-              Tambahkan
-            </button>
-            <button type='button' className='note-input__cancel-button'>
-              Batal
-            </button>
-          </div>
-        </form>
-      </section>
+      <div className='modal'>
+        <div className='modal-content'>
+          <h2 className='section-title'>Buat Catatan</h2>
+          <form className='note-input' onSubmit={this.onSubmitHandler}>
+            <p className='note-input__title__char-limit'>
+              Sisa Karakter:{this.state.charsLeft}
+            </p>
+            <input
+              value={this.state.title}
+              className='note-input__title'
+              type='text'
+              id='title'
+              onChange={this.onTitleChangeHandler}
+              placeholder='Judul'
+              required
+            />
+            <textarea
+              value={this.state.body}
+              onChange={this.onBodyChangeHandler}
+              placeholder='Isi Catatan'
+              required
+            />
+            <div className='note-input__button'>
+              <button type='submit' className='note-input__submit-button'>
+                Tambahkan
+              </button>
+              <button
+                type='button'
+                className='note-input__cancel-button'
+                onClick={this.onClickHandler}
+              >
+                Batal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     );
   }
 }

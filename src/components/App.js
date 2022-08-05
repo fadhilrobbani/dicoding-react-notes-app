@@ -10,12 +10,15 @@ class App extends React.Component {
     this.state = {
       notes: getInitialData(),
       searchKeyword: '',
+      showStatus: false,
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
     this.onSearchKeywordHandler = this.onSearchKeywordHandler.bind(this);
+    this.onSetShowTrue = this.onSetShowTrue.bind(this);
+    this.onSetShowFalse = this.onSetShowFalse.bind(this);
   }
 
   onAddNoteHandler({ title, body, createdAt }) {
@@ -63,6 +66,14 @@ class App extends React.Component {
     this.setState({ searchKeyword: filteredKeyword });
   }
 
+  onSetShowTrue() {
+    this.setState({ showStatus: true });
+  }
+
+  onSetShowFalse() {
+    this.setState({ showStatus: false });
+  }
+
   render() {
     return (
       <>
@@ -73,6 +84,9 @@ class App extends React.Component {
           onArchive={this.onArchiveHandler}
           addNote={this.onAddNoteHandler}
           searchKeyword={this.state.searchKeyword}
+          setShowTrue={this.onSetShowTrue}
+          setShowFalse={this.onSetShowFalse}
+          showStatus={this.state.showStatus}
         />
       </>
     );

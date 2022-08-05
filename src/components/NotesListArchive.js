@@ -30,7 +30,7 @@ function NotesListArchive({ notes, onDelete, onArchive, searchKeyword }) {
 
   return (
     <div>
-      <h2 className='section-title'>Arsip</h2>
+      <h2 className='section-title__archive'>Arsip</h2>
       {archivedNotes}
     </div>
   );

@@ -30,7 +30,7 @@ function NotesListActive({ notes, onDelete, onArchive, searchKeyword }) {
 
   return (
     <div>
-      <h2 className='section-title'>Catatan Aktif</h2>
+      <h2 className='section-title__active'>Catatan Aktif</h2>
       {activeNotes}
     </div>
   );
