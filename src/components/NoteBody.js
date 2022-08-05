@@ -17,6 +17,7 @@ function NoteBody({ notes, onDelete, onArchive, addNote, searchKeyword }) {
         notes={notes}
         onDelete={onDelete}
         onArchive={onArchive}
+        searchKeyword={searchKeyword}
       />
     </main>
   );
