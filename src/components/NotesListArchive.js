@@ -7,7 +7,6 @@ function NotesListArchive({ notes, onDelete, onArchive, searchKeyword }) {
       note.archived &&
       note.title.toLowerCase().replace(/\s+/g, '').includes(searchKeyword)
   );
-  console.log(filteredNotes);
 
   const archivedNotes =
     filteredNotes.length > 0 ? (
