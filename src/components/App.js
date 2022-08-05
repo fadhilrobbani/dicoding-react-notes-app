@@ -1,5 +1,5 @@
 import React from 'react';
-import { getInitialData, showFormattedDate } from '../utils';
+import { getInitialData } from '../utils';
 import NavigationBar from './NavigationBar';
 import NoteBody from './NoteBody';
 
@@ -8,16 +8,14 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      notes: getInitialData().map((note) =>
-        Object.assign(note, { createdAt: showFormattedDate(note.createdAt) })
-      ),
+      notes: getInitialData(),
       searchKeyword: '',
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
-    this.onSearchNoteHandler = this.onSearchNoteHandler.bind(this);
+    this.onSearchKeywordHandler = this.onSearchKeywordHandler.bind(this);
   }
 
   onAddNoteHandler({ title, body, createdAt }) {
@@ -29,7 +27,7 @@ class App extends React.Component {
             id: +new Date(),
             title,
             body,
-            createdAt: showFormattedDate(createdAt),
+            createdAt,
             archived: false,
           },
         ],
@@ -60,20 +58,23 @@ class App extends React.Component {
     });
   }
 
-  onSearchNoteHandler({ keyword }) {
-    const searchKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-    console.log(keyword);
+  onSearchKeywordHandler(keyword) {
+    const filteredKeyword = keyword.toLowerCase().replace(/\s+/g, '');
+    console.log(filteredKeyword);
+
+    this.setState({ searchKeyword: filteredKeyword });
   }
 
   render() {
     return (
       <>
-        <NavigationBar searchNote={this.onSearchNoteHandler} />
+        <NavigationBar searchKeyword={this.onSearchKeywordHandler} />
         <NoteBody
           notes={this.state.notes}
           onDelete={this.onDeleteHandler}
           onArchive={this.onArchiveHandler}
           addNote={this.onAddNoteHandler}
+          searchKeyword={this.state.searchKeyword}
         />
       </>
     );

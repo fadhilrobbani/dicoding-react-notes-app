@@ -1,11 +1,11 @@
 import React from 'react';
 import SearchInput from './SearchInput';
 
-function NavigationBar({ searchNote }) {
+function NavigationBar({ searchKeyword }) {
   return (
     <header className='note-app__header'>
       <h1>Notes</h1>
-      <SearchInput searchNote={searchNote} />
+      <SearchInput searchKeyword={searchKeyword} />
     </header>
   );
 }

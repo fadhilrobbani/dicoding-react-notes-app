@@ -1,9 +1,11 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 
-function NotesListArchive({ notes, onDelete, onArchive }) {
+function NotesListArchive({ notes, onDelete, onArchive, searchKeyword }) {
   const filteredNotes = notes.filter(
-    (note) => note.archived && notes.length > 0
+    (note) =>
+      note.archived &&
+      note.title.toLowerCase().replace(/\s+/g, '').includes(searchKeyword)
   );
 
   const archivedNotes =

@@ -28,7 +28,7 @@ class SearchInput extends React.Component {
       };
     });
 
-    this.props.searchNote(this.state);
+    this.props.searchKeyword(event.target.value);
   }
 
   render() {
