@@ -22,12 +22,7 @@ class SearchInput extends React.Component {
   }
 
   onChangeHandler(event) {
-    this.setState(() => {
-      return {
-        keyword: event.target.value,
-      };
-    });
-
+    this.setState({ keyword: event.target.value });
     this.props.searchKeyword(event.target.value);
   }
 

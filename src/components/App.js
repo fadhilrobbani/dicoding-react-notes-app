@@ -40,11 +40,7 @@ class App extends React.Component {
 
   onDeleteHandler(id) {
     const filteredNotes = this.state.notes.filter((note) => note.id !== id);
-    this.setState(() => {
-      return {
-        notes: filteredNotes,
-      };
-    });
+    this.setState({ notes: filteredNotes });
   }
 
   onArchiveHandler(id) {
