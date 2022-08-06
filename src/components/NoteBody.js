@@ -9,15 +9,11 @@ function NoteBody({
   onArchive,
   addNote,
   searchKeyword,
-  setShowTrue,
   setShowFalse,
   showStatus,
 }) {
   return (
     <main className='note-app__body'>
-      <button className='add-button' onClick={setShowTrue}>
-        Tambahkan Catatan
-      </button>
       <NoteInput
         addNote={addNote}
         setShowFalse={setShowFalse}

@@ -1,10 +1,15 @@
 import React from 'react';
 import SearchInput from './SearchInput';
 
-function NavigationBar({ searchKeyword }) {
+function NavigationBar({ searchKeyword, setShowTrue }) {
   return (
     <header className='note-app__header'>
-      <h1>Notes</h1>
+      <div className='note-app__header-title'>
+        <h1>Notes</h1>
+        <button className='add-button' onClick={setShowTrue}>
+          Tambahkan Catatan
+        </button>
+      </div>
       <SearchInput searchKeyword={searchKeyword} />
     </header>
   );

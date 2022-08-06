@@ -77,7 +77,10 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <NavigationBar searchKeyword={this.onSearchKeywordHandler} />
+        <NavigationBar
+          searchKeyword={this.onSearchKeywordHandler}
+          setShowTrue={this.onSetShowTrue}
+        />
         <NoteBody
           notes={this.state.notes}
           onDelete={this.onDeleteHandler}

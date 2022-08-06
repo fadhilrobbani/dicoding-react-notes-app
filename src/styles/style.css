@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #2b2f3a;
+  background-color: #2b2b2b;
   color: white;
 }
 
@@ -30,14 +30,23 @@ textarea::placeholder {
 .note-app__header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 4px 16px;
-  border-bottom: 1px solid #aaa;
+  justify-content: space-between;
+  background-color: #0a0a0a96;
+  position: sticky;
+  top: 0;
+  padding: 8px 30px;
+  border-bottom: 5px solid rgb(84, 84, 84);
+}
+
+.note-app__header-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 20px;
 }
 
 .note-app__header h1 {
   margin: 8px 0;
-  flex: 1;
   color: white;
 }
 
@@ -46,6 +55,7 @@ textarea::placeholder {
   margin: 16px auto;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 0;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -87,11 +97,11 @@ textarea::placeholder {
 .add-button {
   width: fit-content;
   font-size: larger;
-  height: 70px;
-  padding: 8px;
+  height: fit-content;
+  padding: 13px;
   font-family: 'Inter', sans-serif;
   color: white;
-  background-color: rgb(12, 123, 147);
+  background-color: rgb(110, 110, 110);
   border: none;
   border-radius: 11px;
   font-weight: bold;
@@ -100,8 +110,8 @@ textarea::placeholder {
 }
 
 .add-button:hover {
-  color: rgb(12, 123, 147);
-  background-color: white;
+  color: rgb(0, 0, 0);
+  background-color: rgb(227, 227, 227);
 }
 
 .note-input input,
@@ -176,6 +186,10 @@ textarea::placeholder {
   color: #aaa;
   width: auto;
   align-self: stretch;
+}
+
+.section-title {
+  text-align: center;
 }
 
 .section-title__active {
@@ -262,6 +276,20 @@ textarea::placeholder {
 .note-item__delete-button:hover {
   color: #c84b31;
   background-color: white;
+}
+
+@media only screen and (max-width: 646px) {
+  .note-app__header {
+    position: static;
+    flex-direction: column;
+  }
+
+  .note-app__header-title {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+  }
 }
 
 @media only screen and (min-width: 500px) {
